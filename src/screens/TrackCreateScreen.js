@@ -21,7 +21,6 @@ const TrackCreateScreen = ({ isFocused }) => {
 
   return (
     <SafeAreaView forceInset={{ top: 'always' }}>
-      <Text h3>Create Track</Text>
       <Map />
       {err ? <Text>Please enable location services </Text> : null}
       <TrackForm />

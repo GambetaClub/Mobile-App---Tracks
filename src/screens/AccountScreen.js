@@ -4,17 +4,23 @@ import { Text, Button } from 'react-native-elements'
 import { SafeAreaView } from 'react-navigation'
 import Spacer from '../components/Spacer'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+import Title from '../components/Title'
 
 import { Context as AuthContext } from '../context/AuthContext'
 
 const AccountScreen = () => {
   const { signout } = useContext(AuthContext)
   return (
-    <SafeAreaView forceInset={{ top: 'always' }}>
+    <SafeAreaView style={styles.container} forceInset={{ top: 'always' }}>
       <Spacer>
-        <Text h3>Account Screen</Text>
+        <Title text={'Ready to leave?'} />
       </Spacer>
-      <Button title='Sign Out' onPress={signout} />
+      <Spacer>
+        <Spacer />
+      </Spacer>
+      <Spacer>
+        <Button title='Sign Out' onPress={signout} />
+      </Spacer>
     </SafeAreaView>
   )
 }
@@ -24,6 +30,12 @@ AccountScreen.navigationOptions = {
   tabBarIcon: <MaterialCommunityIcons name='account-key' size={24} color='black' />,
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    marginBottom: 180,
+  },
+})
 
 export default AccountScreen

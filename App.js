@@ -44,6 +44,10 @@ const switchNavigator = createSwitchNavigator({
   }),
 })
 
+switchNavigator.navigationOptions = {
+  backgroundColor: 'black',
+}
+
 const App = createAppContainer(switchNavigator)
 
 export default () => {
