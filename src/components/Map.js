@@ -39,7 +39,7 @@ const Map = () => {
 
 const styles = StyleSheet.create({
   map: {
-    height: '85%',
+    height: '55%',
     flexDirection: 'column',
     alignItems: 'center',
   },

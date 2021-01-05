@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { View, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native'
+import { Text } from 'react-native-elements'
 import { ListItem } from 'react-native-elements'
 import { NavigationEvents } from 'react-navigation'
 import { Context as TrackContext } from '../context/TrackContext'
@@ -14,26 +15,30 @@ const TrackListScreen = ({ navigation }) => {
         style={styles.image}
         source={{ uri: 'https://i.ytimg.com/vi/i--JWB9GOhM/sddefault.jpg#404_is_fine' }}
       />
-      <FlatList
-        data={state}
-        keyExtractor={(item) => item._id}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate('TrackDetail', { _id: item._id })
-              }}
-            >
-              <ListItem key={item._id}>
-                <ListItem.Content>
-                  <ListItem.Title>{item.name}</ListItem.Title>
-                </ListItem.Content>
-                <ListItem.Chevron />
-              </ListItem>
-            </TouchableOpacity>
-          )
-        }}
-      />
+      {state ? (
+        <FlatList
+          data={state}
+          keyExtractor={(item) => item._id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('TrackDetail', { _id: item._id })
+                }}
+              >
+                <ListItem key={item._id}>
+                  <ListItem.Content>
+                    <ListItem.Title>{item.name}</ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Chevron />
+                </ListItem>
+              </TouchableOpacity>
+            )
+          }}
+        />
+      ) : (
+        <Text h4>There are not tracks</Text>
+      )}
     </View>
   )
 }
